@@ -49,6 +49,6 @@ You can view the live demo [here](https://cleo469.github.io/Climbing-The-Ladder/
 - **Leaderboard**: Introduce a humorous leaderboard to compare "success potential" scores.
 
 ## Acknowledgments
-This project was inspired by the absurdities often encountered in professional environments, aiming to bring humor and awareness to these issues. Special thanks to anyone who laughs or reflects while "climbing the ladder"!
+This project was inspired by the absurdities often encountered in professional environments, aiming to bring humor and awareness to these issues. Special thanks to anyone who laughs or reflects while "Climbing The Ladder"!
 
 
