@@ -1,0 +1,80 @@
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #535F65;
+    color: #50381F;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    height: 100vh;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+header .subtitle {
+    font-size: 1.2em;
+    color: #dddddd;
+}
+
+.robot img {
+    width: 120px;
+    height: auto;
+    margin: 20px 0;
+}
+
+#start-button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: #0056b3;
+}
+
+#question-box {
+    margin: 30px 0;
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.response {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 300px;
+}
+
+.response:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #888;
+}
