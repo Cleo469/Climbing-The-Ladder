@@ -29,6 +29,10 @@ project-directory/
 ```
 
 ## How to Run the Project
+You can view the live demo [here](https://cleo469.github.io/Climbing-The-Ladder/)
+
+## Or
+
 1. Clone or download the repository to your local machine.
 2. Open `index.html` in any modern web browser.
 3. Click "Start Now" to begin the questionnaire.
