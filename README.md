@@ -8,6 +8,7 @@ Climbing the Ladder is a satirical comedy project designed to poke fun at workpl
 - **Interactive Questionnaire**: Users answer questions about ambition, networking, and popularity, receiving tailored responses based on their choices.
 - **Score-Based Feedback**: Users accumulate scores that reflect their "success potential," adding a comedic twist to workplace evaluations.
 - **Restart Functionality**: Users can restart the questionnaire and try different approaches to see how their scores change.
+- **Score-Based Feedback**: Users accumulate scores that reflect their "success potential," adding a comedic twist to workplace evaluations.(Ongoing)
 
 ## Satirical Themes
 1. **Neurodiversity Omission**: Highlights how workplace assessments often ignore unique cognitive styles and strengths of neurodivergent individuals.
@@ -18,15 +19,17 @@ Climbing the Ladder is a satirical comedy project designed to poke fun at workpl
 - **HTML**: For structuring the interface.
 - **CSS**: For styling the project, including responsive and visually appealing designs.
 - **JavaScript**: For dynamic interactivity, including question transitions, score calculations, and restarting functionality.
+- **Python (Flask)**: Used to build the backend, facilitating communication with OpenAI's API for generating feedback dynamically (backend hosting is a work in progress).
+- **OpenAI API**: Generates sassy or friendly feedback based on user scores, enhancing the humor and interactivity.(Ongoing)
 
-## File Structure
-```
-project-directory/
-|-- index.html         # Main HTML structure
-|-- style.css          # Styling for the project
-|-- script.js          # JavaScript logic for interactivity
-|-- assets/            # Placeholder for images or additional resources
-```
+ ## Ongoing Improvements For AI Section 
+- **Integration of Flask Backend**: The backend is currently being developed using Flask to enable smooth communication between the app and OpenAI’s API. Hosting the backend securely is a priority, and solutions for managing API key security are being explored.
+  
+- **AI-Driven Feedback**: Leveraging OpenAI’s models, the app generates responses that adapt to the user's scores, alternating between sassy and friendly tones to create an engaging experience.
+
+- **Text-to-Speech Feature**: A planned feature where a static AI avatar will read out the questions using tones that match the generated feedback, enhancing interactivity and accessibility.
+
+- **Enhanced Visualizations**: Using Matplotlib to compare user performance against the "perfect employee," making the evaluation process more interactive and analytical.
 
 ## How to Run the Project
 You can view the live demo [here](https://cleo469.github.io/Climbing-The-Ladder/)
