@@ -1,107 +1,224 @@
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #535F65;
-    color: #50381F;
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    position: relative; /* Ensure relative positioning for child absolute elements */
-    height: 100vh; /* Full viewport height */
-    display: flex; /* Use Flexbox to center content */
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-}
-
-header {
-    margin-bottom: 20px;
-}
-
-header h1 {
-    font-size: 2.5em;
+    background-color: #746557;
+    background-image: radial-gradient(circle, #bdb19f 0%, #746557 100%);
     color: #ffffff;
 }
 
-header .subtitle {
-    font-size: 1.2em;
-    color: #dddddd;
+.container {
+    width: 900px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px #785d46;
+}
+
+.title {
+    margin-bottom: 0;
+    font-size: 2.5rem;
+    font-family: 'Orbitron', serif;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: normal;
+}
+
+.robot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 500px;
+    max-width: 90%;
+    height: 150px;
 }
 
 .robot img {
     width: 120px;
-    height: auto;
-    margin: 20px 0;
+    margin: 20px 0 0;
+    object-fit: cover;
+    object-position: top;
+    animation: reveal-robot 1s linear;
+}
+
+.robot .eye {
+    display: none;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff0000cc;
+}
+
+.robot .eye::after {
+    content: '';
+    position: absolute;
+    top: 1.5px;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: #ffffffcc;
+}
+
+.robot #left-eye {
+    top: 46px;
+    left: calc(50% - 14px);
+}
+
+.robot #right-eye {
+    top: 46px;
+    left: calc(50% + 9px);
+}
+
+.robot #bar-chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    border-left: 1px solid #604a38;
+    border-bottom: 1px solid #604a38;
+    opacity: 0;
+}
+
+.robot #bar-chart .bar {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 0;
+    transition: height 0.5s;
+}
+
+.robot #bar-chart .bar-label {
+    position: absolute;
+    top: 72.5px;
+    margin: 0;
+    transform: rotate(-60deg);
+    transform-origin: top right;
+}
+
+.robot #bar-chart #perfect-bar {
+    left: 10px;
+    background-color: #785d46;
+}
+
+.robot #bar-chart #perfect-label {
+    right: 57.5px;
+}
+
+.robot #bar-chart #user-bar {
+    left: 40px;
+    background-color: #604a38;
+}
+
+.robot #bar-chart #user-label {
+    right: 27.5px;
+}
+
+.robot #score-paragraph {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    text-align: end;
+    font-size: 1.25rem;
+}
+
+.robot #score {
+    font-size: 1.5rem;
+    font-family: monospace;
+}
+
+@keyframes reveal-robot {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 120px;
+    }
+}
+
+.robot hr {
+    width: 200px;
+    margin: 0 auto 20px;
+    border: 0.5px solid #785d46;
+}
+
+.button {
+    background-color: #785d46;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.button:hover {
+    background-color: #604a38;
 }
 
 #start-button {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: static; /* Remove absolute positioning */
-    transform: none; /* Remove transform if not needed */
-    display: block; /* Ensure the button is displayed */
-    position: static; /* Or `absolute` if you're centering it manually */
+    animation: reveal-start-button 0.5s linear 1s both;
 }
 
-/* Shared button styles for Start Now and Restart Quiz */
-.styled-button {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-    width: fit-content;
-}
-
-.styled-button:hover {
-    background-color: #0056b3;
-}
-
-
-#start-button:hover {
-    background-color: #0056b3;
+@keyframes reveal-start-button {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 #question-box {
-    margin: 30px 0;
-    font-size: 1.5em;
-    color: #ffffff;
+    max-width: 100%;
+    font-size: 1.25rem;
+    text-shadow: 0 1px 3px #785d46;
 }
 
-.response {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    max-width: 300px;
+#question-box .button {
+    width: 100%;
 }
 
-.response:hover {
-    background-color: #0056b3;
+#question-text {
+    margin-bottom: 30px;
+}
+
+.response-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 500px;
+    max-width: 90%;
+    margin: auto;
 }
 
 footer {
     margin-top: 30px;
-    font-size: 0.9em;
+    font-size: 1.5em;
     color: #888;
 }
