@@ -1,10 +1,15 @@
-// Select elements from the HTML
 const startButton = document.getElementById('start-button');
+const header = document.getElementById('header');
 const questionBox = document.getElementById('question-box');
+const leftEye = document.getElementById('left-eye');
+const rightEye = document.getElementById('right-eye');
+const barChart = document.getElementById('bar-chart');
+const perfectBar = document.getElementById('perfect-bar');
+const userBar = document.getElementById('user-bar');
+const scoreParagraph = document.getElementById('score-paragraph');
 let questionText = document.getElementById('question-text');
 let responseContainer = document.querySelector('.response-container');
 
-// Questions array
 const questions = [
     {
         category: "Ambition",
@@ -79,60 +84,102 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let totalScore = 0;
+const perfectScore = 60;
 
-// Load the current question
+function flashRobotEyes() {
+    leftEye.style.display = 'block';
+    rightEye.style.display = 'block';
+    setTimeout(function() {
+        leftEye.style.display = 'none';
+        rightEye.style.display = 'none';
+    }, 100);
+    setTimeout(function() {
+        leftEye.style.display = 'block';
+        rightEye.style.display = 'block';
+    }, 200);
+    setTimeout(function() {
+        leftEye.style.display = 'none';
+        rightEye.style.display = 'none';
+    }, 300);
+}
+
+function updateScoreParagraph(score) {
+    for (let i = 0; i < score; i++) {
+        setTimeout(function() {
+            const currentScore = parseInt(document.getElementById('score')?.textContent);
+            if (!isNaN(currentScore)) {
+                scoreParagraph.innerHTML = `Score<br />so<br />far:<br /><span id="score">${currentScore + 1}</span>`;
+            }
+        }, i * 500 / score);
+    }
+}
+
 function loadQuestion(index) {
+    flashRobotEyes();
+
     if (index >= questions.length * 2) {
         showResults();
         return;
+    }
+
+    if (!document.getElementById('score')) {
+        scoreParagraph.innerHTML = 'Score<br />so<br />far:<br /><span id="score">0</span>';
     }
 
     const categoryIndex = Math.floor(index / 2);
     const toneIndex = index % 2;
     const currentTone = questions[categoryIndex].tones[toneIndex];
 
-    // Update question text and answers
     questionText.textContent = currentTone.question;
-    responseContainer.innerHTML = ''; // Clear previous responses
+    responseContainer.innerHTML = '';
 
     currentTone.answers.forEach(answer => {
         const button = document.createElement('button');
         button.textContent = answer.text;
         button.dataset.score = answer.score;
-        button.className = 'response';
+        button.className = 'button';
         button.addEventListener('click', handleResponse);
         responseContainer.appendChild(button);
     });
 }
 
-// Handle user responses
 function handleResponse(event) {
     const score = parseInt(event.target.dataset.score);
     if (isNaN(score)) return;
 
     totalScore += score;
     currentQuestionIndex++;
+    updateScoreParagraph(score);
+
+    barChart.style.opacity = 1;
+    perfectBar.style.height = `${currentQuestionIndex * 12}px`
+    userBar.style.height = `${totalScore}px`
     loadQuestion(currentQuestionIndex);
 }
 
-// Show final results
 function showResults() {
+    barChart.style.opacity = 0;
+    scoreParagraph.textContent = '';
+
     questionBox.innerHTML = `
-        <p>Your total score: ${totalScore}</p>
-        <p>Thank you for completing the quiz!</p>
-        <button id="restart-btn">Restart Quiz</button>
+        <header id="header">
+            <h1 class="title">Your total score: ${totalScore}</h1>
+            <h2 class="subtitle">Thank you for completing the quiz!</h2>
+        </header>
+        <button id="restart-btn" class="button">Restart Quiz</button>
     `;
 
     const restartButton = document.getElementById('restart-btn');
     restartButton.addEventListener('click', restartQuiz);
 }
 
-// Restart the quiz
 function restartQuiz() {
+    perfectBar.style.height = 0;
+    userBar.style.height = 0;
+
     currentQuestionIndex = 0;
     totalScore = 0;
 
-    // Reset the DOM elements
     questionBox.style.display = 'none';
     questionBox.innerHTML = `
         <p id="question-text"></p>
@@ -141,12 +188,13 @@ function restartQuiz() {
 
     questionText = document.getElementById('question-text');
     responseContainer = document.querySelector('.response-container');
+    header.style.display = 'block';
     startButton.style.display = 'block';
 }
 
-// Start the quiz
 startButton.addEventListener('click', () => {
     startButton.style.display = 'none';
+    header.style.display = 'none';
     questionBox.style.display = 'block';
     loadQuestion(currentQuestionIndex);
 });
