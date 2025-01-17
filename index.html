@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Climbing the Ladder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Climbing the Ladder</h1>
-            <p class="subtitle">Your Lovely AI Line Manager is here to evaluate your potential!</p>
-        </header>
-
-        <!-- Robot Placeholder -->
         <div class="robot">
-            <img src="robot-placeholder.png" alt="Your AI Assistant">
+            <img src="robot.png" alt="Your AI Assistant">
+            <div id="left-eye" class="eye"></div>
+            <div id="right-eye" class="eye"></div>
+            <hr />
+            <div id="bar-chart">
+                <div id="perfect-bar" class="bar"></div>
+                <p id="perfect-label" class="bar-label">Perfection</p>
+                <div id="user-bar" class="bar"></div>
+                <p id="user-label" class="bar-label">You</p>
+            </div>
+            <p id="score-paragraph"></p>
         </div>
 
-        <!-- Start Button -->
-        <button id="start-button">Start Now</button>
+        <header id="header">
+            <h1 class="title">Climbing the Ladder</h1>
+            <h2 class="subtitle">Your Lovely AI Line Manager is here to evaluate your potential!</h2>
+        </header>
 
-        <!-- Question Box -->
+        <button id="start-button" class="button">Start Now</button>
+
         <div id="question-box" style="display: none;">
             <p id="question-text"></p>
             <div class="response-container"></div>
@@ -31,6 +41,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
